@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NebulaCloud</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Inter, Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: #e2e8f0;
+    overflow-x: hidden;
+  }
+  
+  /* Animated background glow */
+  .glow {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+    filter: blur(100px);
+    animation: float 15s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes float {
+    from { transform: translate(-150px, -100px); }
+    to   { transform: translate(150px, 150px); }
+  }
+  
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo {
+    font-size: 56px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #22d3ee, #3b82f6, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .tagline {
+    font-size: 24px;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-out 0.2s both;
+  }
+  
+  .features {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 60px auto;
+    animation: fadeIn 1s ease-out 0.4s both;
+  }
+  
+  .feature-card {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(14px);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(59,130,246,0.3);
+  }
+  
+  .feature-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  
+  .feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .feature-desc {
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-out 0.6s both;
+  }
+  
+  .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(34,211,238,0.4);
+  }
+  
+  /* Enroll Section */
+  .enroll-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .enroll-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  
+  .enroll-card h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #22d3ee, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .enroll-card p {
+    font-size: 18px;
+    opacity: 0.85;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  .request-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .request-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(168,85,247,0.4);
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1 class="logo">NebulaCloud</h1>
+  <p class="tagline">Your files, floating somewhere safe.</p>
+  
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">☁️</div>
+      <h3 class="feature-title">Private Storage</h3>
+      <p class="feature-desc">Keep your files secure in your own private cloud, accessible only to you and your trusted friends.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3 class="feature-title">Invite Only</h3>
+      <p class="feature-desc">A small, exclusive community. No random strangers, just people you know and trust.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Fast & Simple</h3>
+      <p class="feature-desc">Upload, share, and access your files anytime. No complicated setup, just pure simplicity.</p>
+    </div>
+  </div>
+  
+  <a href="#enroll" class="cta-button">Get Started</a>
+</section>
+
+<!-- Enroll Section -->
+<section id="enroll" class="enroll-section">
+  <div class="enroll-card">
+    <h2>Invite Only</h2>
+    <p>NebulaCloud is a private space for a select group. Interested in joining? Send us a request and we'll review your application.</p>
+    <a href="https://forms.gle/CLWByqNESwTRGk9P9" target="_blank" class="request-button">Request Access</a>
+  </div>
+</section>
+
+</body>
+</html>
